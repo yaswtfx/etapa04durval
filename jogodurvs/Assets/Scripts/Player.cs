@@ -50,4 +50,20 @@ public class Player : MonoBehaviour
         }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            isJumping = false;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            isJumping = true;
+        }
+    }
 }
