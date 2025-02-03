@@ -47,13 +47,13 @@ public class Player : MonoBehaviour
                 rig.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             
 
-        }
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 6)
+        if (collision.gameObject.tag == "Ground")
         {
             isJumping = false;
         }
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 6)
+        if(collision.gameObject.tag == "Ground")
         {
             isJumping = true;
         }
