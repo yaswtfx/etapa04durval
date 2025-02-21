@@ -18,7 +18,8 @@ public class Inimigo : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-         anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+        rb.velocity = new Vector2(2f, 0f);
     }
 
     // Update is called once per frame
@@ -48,7 +49,11 @@ public class Inimigo : MonoBehaviour
         void FixedUpdate()
     {
         // Move o inimigo
-        rb.velocity = movement;
+        //rb.velocity = movement;
+        if (movement != Vector2.zero)
+    {
+        rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+    }
     }
 
     void Attack()
