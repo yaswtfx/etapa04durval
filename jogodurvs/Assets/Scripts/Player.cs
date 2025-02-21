@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        Anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -50,7 +51,7 @@ public class Player : MonoBehaviour
         {
             if (!isJumping)
             {
-                //Anim.SetBool("Pulo",true);
+                Anim.SetBool("Pulo",true);
                 rig.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             
 
@@ -63,7 +64,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isJumping = false;
-            //Anim.SetBool("Pulo", false);
+            Anim.SetBool("Pulo", false);
         }
     }
 

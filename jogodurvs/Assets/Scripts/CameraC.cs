@@ -32,6 +32,8 @@ public class CameraC : MonoBehaviour
         
         if (x < 0)
            x = 0;
+        if (x > 36)
+        x = 36;
         direcao = new Vector3(x, y, -15f);
         transform.position = direcao;
     }
