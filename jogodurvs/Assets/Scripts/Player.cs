@@ -7,7 +7,11 @@ public class Player : MonoBehaviour
     public float speed;
     public float jumpForce;
     public bool isJumping;
-     private Rigidbody2D rig;
+    private Rigidbody2D rig;
+
+    private bool movimento = true;
+
+    private Animator Anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +33,14 @@ public class Player : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0f)
         {
             transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            
         }
 
         if (Input.GetAxis("Horizontal") < 0f)
         {
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
         }
+    
 
     }
 
@@ -44,6 +50,7 @@ public class Player : MonoBehaviour
         {
             if (!isJumping)
             {
+                //Anim.SetBool("Pulo",true);
                 rig.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             
 
@@ -56,6 +63,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isJumping = false;
+            //Anim.SetBool("Pulo", false);
         }
     }
 
