@@ -5926,7 +5926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 7
+  jumpForce: 8
   isJumping: 0
   bx: {fileID: 0}
 --- !u!50 &494562315
