@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public float speed;
     public float jumpForce;
     public bool isJumping;
+    public BoxCollider2D bx;
     private Rigidbody2D rig;
 
     private bool movimento = true;
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bx = GetComponent<BoxCollider2D>();
         rig = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
     }
@@ -24,25 +26,41 @@ public class Player : MonoBehaviour
     {
         Jump();
         Move();
+        Attack();
     }
 
      void Move()
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * speed;
-
+        
         if (Input.GetAxis("Horizontal") > 0f)
         {
             transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            Anim.SetBool("Andar", true);
             
         }
 
         if (Input.GetAxis("Horizontal") < 0f)
         {
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
+            Anim.SetBool("Andar", true);
         }
-    
 
+        if (Input.GetAxis("Horizontal") == 0)
+        {
+            Anim.SetBool("Andar", false);
+        }
+    }
+    void Attack()
+    {
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            Anim.SetBool("Ataque",true);
+        }
+        else {
+            Anim.SetBool("Ataque",false);
+        }
     }
 
     void Jump()
