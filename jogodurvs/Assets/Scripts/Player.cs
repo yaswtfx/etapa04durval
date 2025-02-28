@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bx = GetComponent<BoxCollider2D>();
+        
         rig = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
     }
@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
             if (!isJumping)
             {
                 Anim.SetBool("Pulo",true);
+                Anim.SetBool("Andar",false);
                 rig.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             
 
